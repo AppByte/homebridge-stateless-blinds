@@ -9,7 +9,7 @@ import {
 const fetch = require('node-fetch');
 
 export = (api: API) => {
-    api.registerAccessory("StatelessBlind", StatelessBlindAccessory);
+    api.registerAccessory("StatelessBlinds", StatelessBlindAccessory);
 };
 
 /**
