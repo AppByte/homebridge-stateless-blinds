@@ -8,7 +8,6 @@ import {
 
 /*eslint-disable */
 const fetch = require('node-fetch');
-/*eslint-enable */
 
 export = (api: API) => {
   api.registerAccessory('StatelessBlinds', StatelessBlindAccessory);
@@ -21,9 +20,7 @@ interface IStatelessBlindAccessoryRequest {
     url: string;
     method: string;
     headers: Record<string, string>;
-    /*eslint-disable */
     body: Record<string, any>;
-    /*eslint-enable */
 }
 
 /**
@@ -44,6 +41,7 @@ interface IStatelessBlindAccessoryConfig extends AccessoryConfig {
         'request': IStatelessBlindAccessoryRequest;
     };
 }
+/*eslint-enable */
 
 /**
  * @description Represents the stateless blind accessory.
@@ -73,7 +71,7 @@ class StatelessBlindAccessory implements AccessoryPlugin {
   /**
      * @description Contains the reference to the accessory config.
      * */
-  private readonly config: IStatelessBlindAccessoryConfig;
+  private readonly config: AccessoryConfig;
 
   /**
      * @description Contains the reference to the api.
