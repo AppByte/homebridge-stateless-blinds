@@ -1,0 +1,10 @@
+.idea
+node_modules
+.git
+accessories
+persist
+src
+config.json
+config.schema.json
+nodemon.json
+tsconfig.json
