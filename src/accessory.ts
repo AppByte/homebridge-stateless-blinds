@@ -155,7 +155,7 @@ class StatelessBlindAccessory implements AccessoryPlugin {
     }
 
     /**
-     * Sends a request to the eltako mini safe.
+     * Sends a network request
      *
      * @param {string} command Contains the command to send.
      * */
