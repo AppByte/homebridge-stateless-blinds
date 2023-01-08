@@ -9,7 +9,7 @@ A homebridge plugin for controlling blinds which don't have any position control
 "accessories": [
     {
         "accessory": "StatelessBlind",
-        "name": "Technikraumtest2",
+        "name": "Diningroom blind",
         "up": {
             "name": "Up",
             "active": false,
