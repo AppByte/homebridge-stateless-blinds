@@ -100,8 +100,9 @@ class StatelessBlindAccessory implements AccessoryPlugin {
 
 
         this.informationService = new this.api.hap.Service.AccessoryInformation()
-            .setCharacteristic(this.api.hap.Characteristic.Manufacturer, "Custom Manufacturer")
-            .setCharacteristic(this.api.hap.Characteristic.Model, "Custom Model");
+            .setCharacteristic(this.api.hap.Characteristic.Manufacturer, "Stateless Blinds Inc")
+            .setCharacteristic(this.api.hap.Characteristic.Model, "Stateless Blinds")
+            .setCharacteristic(this.api.hap.Characteristic.Version, "1.0.0");
     }
 
     /**
