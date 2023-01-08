@@ -162,6 +162,13 @@ class StatelessBlindAccessory implements AccessoryPlugin {
     private sendRequest(command: "stop" | "up" | "down") {
         const requestInformation = this.config[command].request;
 
+        if (requestInformation.method.toUpperCase() === "GET") {
+            return fetch(requestInformation.url, {
+                method: requestInformation.method,
+                headers: requestInformation.headers
+            })
+        }
+
         return fetch(requestInformation.url, {
             method: requestInformation.method,
             headers: requestInformation.headers,
