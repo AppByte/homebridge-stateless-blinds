@@ -24,6 +24,7 @@
   },
   "keywords": [
     "homebridge-plugin",
+    "http-blinds",
     "stateless-blinds"
   ],
   "dependencies": {
