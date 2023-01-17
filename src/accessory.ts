@@ -17,6 +17,7 @@ export = (api: API) => {
  * @description Available network options.
  * */
 interface IStatelessBlindAccessoryRequest {
+    delay?: number,
     url: string;
     method: string;
     headers: Record<string, string>;
@@ -27,17 +28,17 @@ interface IStatelessBlindAccessoryRequest {
  * @description Describes the contents of a stateless blind accessory.
  * */
 interface IStatelessBlindAccessoryConfig extends AccessoryConfig {
-    'up': {
+    up: {
         'name': string;
         'active': boolean;
         'request': IStatelessBlindAccessoryRequest;
     };
-    'down': {
+    down: {
         'name': string;
         'active': boolean;
         'request': IStatelessBlindAccessoryRequest;
     };
-    'stop': {
+    stop: {
         'request': IStatelessBlindAccessoryRequest;
     };
 }
@@ -134,11 +135,11 @@ class StatelessBlindAccessory implements AccessoryPlugin {
      */
   handleOnUpSet(value) {
     if (value) {
-      this.sendRequest('up');
+      this.sendCommand('up');
       return;
     }
 
-    this.sendRequest('stop');
+    this.sendCommand('stop');
   }
 
   /**
@@ -153,32 +154,46 @@ class StatelessBlindAccessory implements AccessoryPlugin {
      */
   handleOnDownSet(value) {
     if (value) {
-      this.sendRequest('down');
+      this.sendCommand('down');
       return;
     }
 
-    this.sendRequest('stop');
+    this.sendCommand('stop');
   }
 
   /**
-     * Sends a network request
+     * Sends a command.
      *
      * @param {string} command Contains the command to send.
      * */
-  private sendRequest(command: 'stop' | 'up' | 'down') {
-    const requestInformation = this.config[command].request;
+  private sendCommand(command: 'stop' | 'up' | 'down') {
+    const requestInformation: IStatelessBlindAccessoryRequest = this.config[command].request;
 
-    if (requestInformation.method.toUpperCase() === 'GET') {
-      return fetch(requestInformation.url, {
-        method: requestInformation.method,
-        headers: requestInformation.headers,
+    if (requestInformation.delay) {
+      setTimeout(() => this.sendRequest(requestInformation), requestInformation.delay);
+      return;
+    }
+
+    this.sendRequest(requestInformation);
+  }
+
+  /**
+   * Sends a network request
+   *
+   * @param {IStatelessBlindAccessoryRequest} request Contains the request details in order to send it.
+   * */
+  private sendRequest(request: IStatelessBlindAccessoryRequest) {
+    if (request.method.toUpperCase() === 'GET') {
+      return fetch(request.url, {
+        method: request.method,
+        headers: request.headers,
       });
     }
 
-    return fetch(requestInformation.url, {
-      method: requestInformation.method,
-      headers: requestInformation.headers,
-      body: JSON.stringify(requestInformation.body),
+    return fetch(request.url, {
+      method: request.method,
+      headers: request.headers,
+      body: JSON.stringify(request.body),
     });
   }
 }

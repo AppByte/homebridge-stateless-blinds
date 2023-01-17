@@ -1,7 +1,7 @@
 {
   "displayName": "Stateless Blinds",
   "name": "homebridge-stateless-blinds",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Homebridge plugin for controlling blinds without positioning data.",
   "license": "MIT",
   "repository": {

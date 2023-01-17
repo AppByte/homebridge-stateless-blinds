@@ -22,6 +22,7 @@ Add the following example config to the list of your accessories in your homebri
             "active": false,
             "request": {
                 "url": "http://x.x.x.x/",
+                "delay": 500,
                 "method": "POST",
                 "headers": {},
                 "body": {}
@@ -32,6 +33,7 @@ Add the following example config to the list of your accessories in your homebri
             "active": false,
             "request": {
                 "url": "http://x.x.x.x/",
+                "delay": 500,
                 "method": "POST",
                 "headers": {},
                 "body": {}
@@ -40,6 +42,7 @@ Add the following example config to the list of your accessories in your homebri
         "stop": {
             "request": {
                 "url": "http://x.x.x.x/",
+                "delay": 500,
                 "method": "POST",
                 "headers": {},
                 "body": {}
