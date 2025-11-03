@@ -92,7 +92,7 @@ class StatelessBlindAccessory implements AccessoryPlugin {
     this.api = api;
     this.config = config;
 
-    this.upService = new this.api.hap.Service.Switch(this.config.up.name, `${this.config.replace(/\s+/g, '-')}-${this.config.up.name.replace(/\s+/g, '-')}-up`);
+    this.upService = new this.api.hap.Service.Switch(this.config.up.name, `${this.config.name.replace(/\s+/g, '-')}-${this.config.up.name.replace(/\s+/g, '-')}-up`);
     this.downService = new this.api.hap.Service.Switch(this.config.down.name, 'down', `${this.config.name.replace(/\s+/g, '-')}-${this.config.down.name.replace(/\s+/g, '-')}-down`);
 
     this.upService.setCharacteristic(this.api.hap.Characteristic.Name, this.config.up.name);
