@@ -92,8 +92,8 @@ class StatelessBlindAccessory implements AccessoryPlugin {
     this.api = api;
     this.config = config;
 
-    const upName = `${this.config.name} ${this.config.up.name ?? ''}`; 
-    const downName = `${this.config.name} ${this.config.down.name ?? ''}`; 
+    const upName = `${this.config.name} ${this.config.up.name}`; 
+    const downName = `${this.config.name} ${this.config.down.name}`; 
 
     this.upService = new this.api.hap.Service.Switch(upName, 'up');
     this.downService = new this.api.hap.Service.Switch(downName, 'down');
